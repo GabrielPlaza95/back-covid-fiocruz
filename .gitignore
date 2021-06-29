@@ -3,3 +3,5 @@ node_modules/
 
 # Vim
 [._]*.sw[a-p]
+
+.env
