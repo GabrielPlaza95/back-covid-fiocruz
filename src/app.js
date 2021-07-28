@@ -3,7 +3,7 @@ import routes from './routes/index.js'
 import pool from './loaders/mysql.js'
 
 const app = express()
-const port = 8080
+const port = process.env.PORT
 
 app.set('db connection pool', pool)
 app.use(express.json())

@@ -1,7 +1,4 @@
 SELECT
---	id_amostra AS id,
---	data_criacao AS creationTime,
---	data_atualizacao AS updateTime,
 	id_ncbi AS numero,
 	esta_infectado AS estaInfectado,
 	doenca.nome AS doenca,
@@ -14,5 +11,5 @@ JOIN gravidade USING (id_gravidade)
 JOIN tecido USING (id_tecido)
 WHERE
 	id_ncbi = ?
-	OR doenca.nome LIKE '%%' ? '%%'
-	OR tecido.nome LIKE '%%' ? '%%';
+	OR doenca.nome LIKE CONCAT('%%', ?, '%%')
+	OR tecido.nome LIKE CONCAT('%%', ?, '%%');

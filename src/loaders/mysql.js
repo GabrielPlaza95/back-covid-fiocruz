@@ -1,9 +1,9 @@
 import { createPool } from 'mysql2/promise'
  
 const pool = createPool({
-	host: 'localhost',
-	user: 'covid',
-	password: 'CoV1d2021Ac3ss0#!',
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASS,
 	database: 'covid',
 	waitForConnections: true,
 	connectionLimit: 5,
