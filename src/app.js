@@ -1,6 +1,7 @@
 import express from 'express'
-import routes from './routes/index.js'
+import './loaders/dotenv.js'
 import pool from './loaders/mysql.js'
+import routes from './routes/index.js'
 
 const app = express()
 const port = process.env.PORT
