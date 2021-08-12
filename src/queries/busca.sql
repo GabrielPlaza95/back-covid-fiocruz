@@ -1,4 +1,5 @@
 SELECT
+	id_amostra AS id,
 	id_ncbi AS numero,
 	esta_infectado AS estaInfectado,
 	doenca.nome AS doenca,
