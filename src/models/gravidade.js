@@ -1,10 +1,10 @@
 import { readFile } from 'fs/promises'
+import { list_query } from '../queries/general_queries';
 
-const query = await readFile('src/queries/general_list.sql', { encoding: 'utf8' })
 const gravidade_table = "gravidade";
 
 export default async (conn) => {
-	const [rows] = await conn.execute(query)
+	const [rows] = await conn.execute(list_query(gravidade_table))
 
 	return rows
 }
