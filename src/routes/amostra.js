@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { add, remove } from '../models/amostra.js'
+import search from '../models/busca.js'
 
 const router = Router()
 
