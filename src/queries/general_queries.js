@@ -1,5 +1,5 @@
 
 
-export const list_query = (table) => {
+export function list_query(table) {
     return `SELECT * FROM ${table};`
 }
