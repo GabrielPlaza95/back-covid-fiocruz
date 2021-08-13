@@ -7,6 +7,7 @@ import gravidade from './gravidade.js'
 import comorbidade from './comorbidade.js'
 import doenca from './doenca.js'
 import tecido from './tecido.js'
+import arquivo from './arquivo.js'
 
 const router = Router()
 
@@ -22,5 +23,6 @@ router.use('/gravidade', gravidade)
 router.use('/comorbidade', comorbidade)
 router.use('/doenca', doenca)
 router.use('/tecido', tecido)
+router.use('/arquivo', arquivo)
 
 export default router
