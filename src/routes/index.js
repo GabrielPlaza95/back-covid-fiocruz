@@ -4,8 +4,8 @@ import download from './download.js'
 import transferencia from './transferencia.js'
 import amostra from './amostra.js'
 import gravidade from './gravidade.js'
-import comorbidade from './comorbidade'
-import doenca from './doenca'
+import comorbidade from './comorbidade.js'
+import doenca from './doenca.js'
 import tecido from './tecido.js'
 
 const router = Router()
