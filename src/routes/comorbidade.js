@@ -6,8 +6,8 @@ const router = Router()
 router.get('/', async (req, res) => {
 	const pool = req.app.get('db connection pool')
 
-	const severities = await list(pool, "gravidade") 
-	res.json(severities)
+	const comorbidities = await list(pool, "comorbidade") 
+	res.json(comorbidities)
 })
 
 export default router
