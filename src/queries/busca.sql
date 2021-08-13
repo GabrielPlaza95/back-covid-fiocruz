@@ -11,6 +11,6 @@ JOIN doenca USING (id_doenca)
 JOIN gravidade USING (id_gravidade)
 JOIN tecido USING (id_tecido)
 WHERE
-	id_ncbi = ?
+	id_ncbi LIKE CONCAT('%%', ?, '%%')
 	OR doenca.nome LIKE CONCAT('%%', ?, '%%')
 	OR tecido.nome LIKE CONCAT('%%', ?, '%%');
