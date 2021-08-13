@@ -1,1 +1,1 @@
-SELECT * FROM ? LIMIT 100;
+SELECT * FROM gravidade;
