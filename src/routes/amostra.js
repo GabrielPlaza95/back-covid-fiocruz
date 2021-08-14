@@ -9,8 +9,7 @@ router.get('/', async (req, res) => {
 	const pool = req.app.get('db connection pool')
 
 	let term = busca ? busca : ""
-
-	const samples = await search(pool, term) 
+	const samples = await search(pool, term)
 	res.json(samples)
 })
 

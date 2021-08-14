@@ -5,6 +5,7 @@ const queryRemove = await readFile('src/queries/amostra_delete.sql', { encoding:
 
 export async function add (conn, data) {
 	const {
+		id_arquivo,
 		numero,
 		estaInfectado,
 		doenca,
@@ -12,7 +13,7 @@ export async function add (conn, data) {
 		tecido
 	} = data
 
-	await conn.execute(queryAdd, [numero, estaInfectado, doenca, gravidade, tecido])
+	await conn.execute(queryAdd, [numero, estaInfectado, doenca, gravidade, tecido, id_arquivo])
 }
 
 export async function remove (conn, id) {
