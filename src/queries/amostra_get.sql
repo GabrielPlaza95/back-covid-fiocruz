@@ -14,6 +14,4 @@ JOIN gravidade USING (id_gravidade)
 JOIN tecido USING (id_tecido)
 JOIN arquivo USING (id_arquivo)
 WHERE
-	id_ncbi LIKE CONCAT('%%', ?, '%%')
-	OR doenca.nome LIKE CONCAT('%%', ?, '%%')
-	OR tecido.nome LIKE CONCAT('%%', ?, '%%');
+	id_amostra = ?

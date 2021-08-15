@@ -1,6 +1,9 @@
 import { Router } from 'express'
-import { add, remove } from '../models/amostra.js'
+
+import { add, remove, get } from '../models/amostra.js'
 import search from '../models/busca.js'
+import getPath from '../models/download.js'
+import { zipFiles } from '../utils.js'
 
 const router = Router()
 
@@ -21,6 +24,14 @@ router.post('/', async (req, res) => {
 	res.end()
 })
 
+router.get('/:id', async (req, res) => {
+	const { id } = req.params
+	const pool = req.app.get('db connection pool')
+
+	const sample = await get(pool, parseInt(id)) 
+	res.json(sample)
+})
+
 router.delete('/:id', async (req, res) => {
 	const { id } = req.params
 	const pool = req.app.get('db connection pool')
@@ -29,4 +40,17 @@ router.delete('/:id', async (req, res) => {
 	res.end()
 })
 
+router.get('/:id/download', async (req, res) => {
+	const { id } = req.params
+	const pool = req.app.get('db connection pool')
+
+	const path = await getPath(pool, id)
+	const zipBuffer = zipFiles(path)
+	if (path !== null)
+		res.end(Buffer.from(zipBuffer))
+	else
+		res.status(404)
+})
+
 export default router
+
