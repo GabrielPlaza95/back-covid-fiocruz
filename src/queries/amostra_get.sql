@@ -4,8 +4,11 @@ SELECT
 	esta_infectado AS estaInfectado,
 	id_arquivo,
 	arquivo.nome as nomeArquivo,
+	doenca.id_doenca,
 	doenca.nome AS doenca,
+	gravidade.id_gravidade,
 	gravidade.nome AS gravidade,
+	tecido.id_tecido,
 	tecido.nome AS tecido
 FROM
 	amostra

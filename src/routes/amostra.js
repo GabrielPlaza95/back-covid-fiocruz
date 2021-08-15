@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { add, remove, get } from '../models/amostra.js'
+import { add, remove, get, put } from '../models/amostra.js'
 import search from '../models/busca.js'
 import getPath from '../models/download.js'
 import { zipFiles } from '../utils.js'
@@ -31,6 +31,14 @@ router.get('/:id', async (req, res) => {
 	const sample = await get(pool, parseInt(id)) 
 	res.json(sample)
 })
+
+router.put('/:id', async (req, res) => {
+	const { id } = req.params
+	const pool = req.app.get('db connection pool')
+	await put(pool, req.body, parseInt(id)) 
+	res.end()
+})
+
 
 router.delete('/:id', async (req, res) => {
 	const { id } = req.params
