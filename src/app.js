@@ -1,3 +1,4 @@
+import 'express-async-errors'
 import express from 'express'
 import './loaders/dotenv.js'
 import pool from './loaders/mysql.js'
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+	console.error(err.stack);
 	res.status(err.status || 500);
 	res.json({ errors: { message: err.message } })
 })
