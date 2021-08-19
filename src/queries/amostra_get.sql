@@ -4,8 +4,11 @@ SELECT
 	esta_infectado AS estaInfectado,
 	id_arquivo,
 	arquivo.nome as nomeArquivo,
+	doenca.id_doenca,
 	doenca.nome AS doenca,
+	gravidade.id_gravidade,
 	gravidade.nome AS gravidade,
+	tecido.id_tecido,
 	tecido.nome AS tecido
 FROM
 	amostra
@@ -14,6 +17,4 @@ JOIN gravidade USING (id_gravidade)
 JOIN tecido USING (id_tecido)
 JOIN arquivo USING (id_arquivo)
 WHERE
-	id_ncbi LIKE CONCAT('%%', ?, '%%')
-	OR doenca.nome LIKE CONCAT('%%', ?, '%%')
-	OR tecido.nome LIKE CONCAT('%%', ?, '%%');
+	id_amostra = ?
