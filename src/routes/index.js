@@ -8,6 +8,7 @@ import comorbidade from './comorbidade.js'
 import doenca from './doenca.js'
 import tecido from './tecido.js'
 import arquivo from './arquivo.js'
+import login from './login.js'
 
 const router = Router()
 
@@ -15,6 +16,7 @@ router.get('/', (req, res) => {
 	res.send('Hello Node!')
 })
 
+router.use('/login', login)
 router.use('/busca', busca)
 router.use('/download', download)
 router.use('/transferencia', transferencia)
