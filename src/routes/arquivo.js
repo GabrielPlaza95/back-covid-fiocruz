@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import list from '../models/arquivos.js'
+import { list } from '../models/arquivos.js'
 
 const router = Router()
 
