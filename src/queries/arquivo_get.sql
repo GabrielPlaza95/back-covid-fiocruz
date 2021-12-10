@@ -1,0 +1,1 @@
+SELECT * FROM arquivo WHERE esta_linkado = false;

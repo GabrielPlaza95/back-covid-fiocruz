@@ -9,27 +9,29 @@ const queryPut = await readFile('src/queries/amostra_update.sql', { encoding: 'u
 
 export async function add (conn, data) {
 	const {
-		arquivo,
-		numero,
-		estaInfectado,
-		doenca,
-		gravidade,
-		tecido,
-		comorbidade
+		id_arquivo,
+		id_geo,
+		versao_crc,
+		param_crc,
+		filtro_crc,
+		celulas_infectadas,
 	} = data
-	
+
 	const rowsInserted = await conn.execute(
 		queryAddSample, 
-		[numero, estaInfectado, doenca, gravidade, tecido, arquivo]
+		[
+			id_arquivo,
+			id_geo,
+			versao_crc,
+			param_crc,
+			filtro_crc,
+			celulas_infectadas,
+		]
 	)
-	await conn.execute(
-		queryAddComorbidity, 
-		[rowsInserted[0].insertId, comorbidade]
-	)
+	return rowsInserted
 }
 
 export async function remove (conn, id) {
-	await conn.execute(queryRemoveComorbidity, [id])
 	await conn.execute(queryRemoveSample, [id])
 }
 
@@ -43,20 +45,23 @@ export async function get (conn, id) {
 
 export async function put (conn, data, id) {
 	const {
-		numero,
-		estaInfectado,
-		doenca,
-		gravidade,
-		tecido,
-		arquivo,
-		comorbidade,
+		id_geo,
+		versao_crc,
+		param_crc,
+		filtro_crc,
+		celulas_infectadas,
 	} = data
 	await Promise.all([
 		conn.execute(
 			queryPut, 
-			[numero, estaInfectado, doenca, gravidade, tecido, arquivo, id]
+			[
+				id_geo,
+				versao_crc,
+				param_crc,
+				filtro_crc,
+				celulas_infectadas,
+				id
+			]
 		),
-		conn.execute(queryRemoveComorbidity, [id]),
-		conn.execute(queryAddComorbidity, [id, comorbidade])
 	])
 }
