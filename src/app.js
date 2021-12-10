@@ -29,10 +29,10 @@ initializePassport(passport, email => email, pass => pass);
 
 
 app.use(session({  
-	secret: '123',//configure um segredo seu aqui,
+	secret: process.env.SECRET,
 	resave: false,
 	saveUninitialized: false,
-	cookie: { maxAge: 30 * 60 * 1000 }//30min
+	cookie: { maxAge: 30 * 60 * 1000 }
   }));
 
 app.use(passport.initialize());
